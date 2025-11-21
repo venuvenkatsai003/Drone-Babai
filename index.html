@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="Assets/Logo1.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Babai - Agricultural Drone Services</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --primary: #0B401D;
+    --secondary: #4F7C01;
+    --accent: #B7D53C;
+    --light: #f5f9f5;
+    --dark: #333;
+    --gray: #777;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+.logo-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.logo:hover .logo-image {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Simple underline animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section with Background Image */
+.hero {
+    background: 
+        linear-gradient(rgba(11, 64, 29, 0.7), rgba(79, 124, 1, 0.7)),
+        url('./Assets/bg1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--dark);
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    animation: fadeInUp 1s ease 0.4s both;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    background-color: #a8c434;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Scroll Animation Classes */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate-left.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-animate-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate-right.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-animate-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate-scale.animated {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* About */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--gray);
+}
+
+.about-image {
+    flex: 1;
+    border-radius: 10px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Service Details */
+.service-details {
+    background-color: white;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.detail-card {
+    background-color: var(--light);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    border-top: 4px solid var(--accent);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    transition: height 0.4s ease;
+    z-index: 0;
+}
+
+.detail-card:hover::before {
+    height: 100%;
+}
+
+.detail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.detail-card:hover .detail-icon,
+.detail-card:hover h3,
+.detail-card:hover p {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    transition: color 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-card p {
+    color: var(--gray);
+    transition: color 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Crops with Images and Overlay Names */
+.crops-list {
+    text-align: center;
+}
+
+.crops-list h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.crop-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+}
+
+.crop-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.crop-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Crop name positioned over the image with faded green background */
+.crop-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(transparent, rgba(11, 64, 29, 0.8));
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+/* Hover caption for crops */
+.crop-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(11, 64, 29, 0.9));
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.crop-item:hover .crop-caption {
+    transform: translateY(0);
+}
+
+.crop-item:hover .crop-name {
+    opacity: 0;
+}
+
+/* Process Section */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-10px);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.process-step h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* Gallery Section */
+.gallery {
+    background-color: var(--light);
+    overflow: hidden;
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    overflow: visible;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    transition: all 0.4s ease;
+    transform-origin: center;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+/* Gallery Popup */
+.gallery-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.gallery-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.popup-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.close-popup {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: var(--accent);
+    color: var(--dark);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-popup:hover {
+    background: #a8c434;
+    transform: scale(1.1);
+}
+
+/* Booking Form */
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.booking-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(183, 213, 60, 0.2);
+}
+
+.form-control.error {
+    border-color: #ff6b6b;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info p:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--accent);
+    color: var(--dark);
+    padding: 15px 25px;
+    border-radius: 5px;
+    z-index: 1001;
+    display: none;
+    font-weight: 500;
+    animation: slideInRight 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .gallery-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .crops-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .nav-links a {
+        padding: 10px 0;
+        font-size: 1.1rem;
+    }
+    
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .process-steps {
+        flex-direction: column;
+    }
+    
+    .hero {
+        padding-top: 100px;
+        height: calc(100vh - 20px);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .crops-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-item:hover {
+        transform: scale(1.08);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .hero {
+        padding-top: 90px;
+        height: calc(100vh - 10px);
+    }
+    
+    .crops-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<nav class="navbar">
+<div class="logo">
+<div class="logo-image">
+    <img src="./Assets/Logo.png" alt="Drone Babai Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='🚁'; this.parentNode.style.fontSize='1.5rem';">
+</div>
+<div class="logo-text">Drone Babai</div>
+</div>
+
+<button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#process">Process</a>
+<a href="#gallery">Gallery</a>
+<a href="#booking">Book Now</a>
+</div>
+</nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+<h1>Revolutionizing Agriculture with Drone Technology</h1>
+<p>Precision farming solutions for higher yields and sustainable agriculture</p>
+<a href="#booking" class="cta-button">Book Your Slot Now</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+<div class="section-title scroll-animate">
+<h2>About Drone Babai</h2>
+<p>Transforming traditional farming with cutting-edge drone technology</p>
+</div>
+<div class="about-content">
+<div class="about-text scroll-animate-left">
+<h3>Modernizing Agriculture Through Innovation</h3>
+<p>Drone Babai provides efficient, cost-effective drone solutions for crop management. We specialize in drone-based spraying with precision targeting.</p>
+<p>Our mission is to increase crop yields while reducing environmental impact through technology. With years of experience in agricultural technology, we're committed to helping farmers achieve better results with less effort.</p>
+</div>
+<div class="about-image scroll-animate-right">
+    <img src="./Assets/Drone.jpg" alt="Agricultural Drone Technology">
+</div>
+</div>
+</div>
+</section>
+
+<section class="section service-details" id="services">
+<div class="container">
+<div class="section-title scroll-animate">
+<h2>Our Service Details</h2>
+<p>Efficient drone services for modern farming</p>
+</div>
+<div class="details-grid">
+<div class="detail-card scroll-animate-scale">
+<div class="detail-icon">₹</div>
+<h3>Rate</h3>
+<p>600 rupees per acre</p>
+</div>
+<div class="detail-card scroll-animate-scale">
+<div class="detail-icon">📈</div>
+<h3>Coverage</h3>
+<p>Up to 70 acres per day</p>
+</div>
+<div class="detail-card scroll-animate-scale">
+<div class="detail-icon">⚡</div>
+<h3>Speed</h3>
+<p>Approx 10 acres per hour</p>
+</div>
+<div class="detail-card scroll-animate-scale">
+<div class="detail-icon">🌱</div>
+<h3>Eco-Friendly</h3>
+<p>Reduced chemical usage</p>
+</div>
+</div>
+<div class="crops-list scroll-animate">
+<h3>Supported Crops</h3>
+<div class="crops-grid">
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/Rice.jpeg" alt="Rice" class="crop-image">
+    <div class="crop-name">Rice</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/Corn.webp" alt="Corn" class="crop-image">
+    <div class="crop-name">Corn</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/cotton.jpg" alt="Cotton" class="crop-image">
+    <div class="crop-name">Cotton</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/red gram.webp" alt="Red Gram" class="crop-image">
+    <div class="crop-name">Red Gram</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/mirchi.jpg" alt="Mirchi" class="crop-image">
+    <div class="crop-name">Mirchi</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/soybean.jpg" alt="Soybean" class="crop-image">
+    <div class="crop-name">Soybean</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/wheat.jpg" alt="Wheat" class="crop-image">
+    <div class="crop-name">Wheat</div>
+</div>
+<div class="crop-item scroll-animate-scale">
+    <img src="./Assets/Crops/sugarcane.webp" alt="Sugarcane" class="crop-image">
+    <div class="crop-name">Sugarcane</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="process">
+<div class="container">
+<div class="section-title scroll-animate">
+<h2>Our Process</h2>
+<p>Simple steps to modernize your farming</p>
+</div>
+<div class="process-steps">
+<div class="process-step scroll-animate-scale">
+<div class="step-number">1</div>
+<h4>Book Your Slot</h4>
+<p>Fill out our simple booking form with your farm details</p>
+</div>
+<div class="process-step scroll-animate-scale">
+<div class="step-number">2</div>
+<h4>Site Assessment</h4>
+<p>Our team visits your farm to assess requirements</p>
+</div>
+<div class="process-step scroll-animate-scale">
+<div class="step-number">3</div>
+<h4>Drone Operation</h4>
+<p>We deploy drones for precise spraying as scheduled</p>
+</div>
+<div class="process-step scroll-animate-scale">
+<div class="step-number">4</div>
+<h4>Follow-up</h4>
+<p>We provide a service report and follow up on results</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section gallery" id="gallery">
+<div class="gallery-container">
+<div class="section-title scroll-animate">
+<h2>Our Work Gallery</h2>
+<p>See our drones in action across various farms and crops</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/1.jpg" class="gallery-image">
+</div>
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/4.png" class="gallery-image">
+</div>
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/6.png" class="gallery-image">
+</div>
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/7.png" class="gallery-image">
+</div>
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/8.png" class="gallery-image">
+</div>
+<div class="gallery-item scroll-animate-scale">
+    <img src="./Assets/onSite/9.png" class="gallery-image">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Gallery Popup -->
+<div class="gallery-popup" id="galleryPopup">
+    <div class="popup-content">
+        <button class="close-popup" id="closePopup">×</button>
+        <img src="" alt="" class="popup-image" id="popupImage">
+    </div>
+</div>
+
+<section class="section" id="booking">
+<div class="container">
+<div class="section-title scroll-animate">
+<h2>Book Your Slot</h2>
+<p>Schedule drone services for your farm</p>
+</div>
+<div class="booking-form scroll-animate-scale">
+<form id="bookingForm">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      placeholder="Enter your name"
+      required
+    >
+    <div class="error-message" id="nameError">Please enter your name</div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      class="form-control"
+      placeholder="Enter phone number"
+      required
+    >
+    <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
+  </div>
+
+  <div class="form-group">
+    <label for="village">Village Name</label>
+    <input
+      type="text"
+      id="village"
+      name="village"
+      class="form-control"
+      placeholder="Enter village name"
+      required
+    >
+    <div class="error-message" id="villageError">Please enter your village name</div>
+  </div>
+
+  <div class="form-group">
+    <label for="crop">Crop Type</label>
+    <select
+      id="crop"
+      name="crop"
+      class="form-control"
+      required
+    >
+      <option value="">Select crop</option>
+      <option value="rice">Rice</option>
+      <option value="corn">Corn</option>
+      <option value="cotton">Cotton</option>
+      <option value="red-gram">Red Gram</option>
+      <option value="mirchi">Mirchi</option>
+      <option value="soybean">Soybean</option>
+      <option value="wheat">Wheat</option>
+      <option value="sugarcane">Sugarcane</option>
+    </select>
+    <div class="error-message" id="cropError">Please select a crop type</div>
+  </div>
+
+  <div class="form-group">
+    <label for="acres">Acres of Land</label>
+    <input
+      type="number"
+      id="acres"
+      name="acres"
+      class="form-control"
+      placeholder="Enter acres"
+      min="1"
+      required
+    >
+    <div class="error-message" id="acresError">Please enter a valid number of acres</div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Preferred Date</label>
+    <input
+      type="date"
+      id="date"
+      name="date"
+      class="form-control"
+      required
+    >
+    <div class="error-message" id="dateError">Please select a date</div>
+  </div>
+
+  <button type="submit" class="cta-button" style="width: 100%;">Book Now</button>
+</form>
+
+<p id="status" style="margin-top:10px;"></p>
+
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="logo scroll-animate" style="justify-content: center; margin-bottom: 1.5rem;">
+<div class="logo-image">
+    <img src="./Assets/Logo.png" alt="Drone Babai Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='🚁'; this.parentNode.style.fontSize='1.5rem';">
+</div>
+<div class="logo-text">Drone Babai</div>
+</div>
+<p class="scroll-animate">Transforming agriculture through innovative drone technology</p>
+<div class="contact-info scroll-animate">
+<p>Thumukunta, Hyderabad - 500078</p>
+<p>Phone: 6301980961</p>
+<p>Email: info@dronebabai.com</p>
+</div>
+<div class="copyright scroll-animate">
+<p>&copy; 2023 Drone Babai. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+
+<div class="notification" id="notification">Booking confirmed! We'll contact you soon.</div>
+
+<script>
+// Mobile menu toggle - Fixed implementation
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+    }
+});
+
+// Gallery Popup functionality
+const galleryPopup = document.getElementById('galleryPopup');
+const popupImage = document.getElementById('popupImage');
+const closePopup = document.getElementById('closePopup');
+
+// Add click event to all gallery images
+document.querySelectorAll('.gallery-image').forEach(image => {
+    image.addEventListener('click', () => {
+        popupImage.src = image.src;
+        galleryPopup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+});
+
+// Close popup when clicking close button
+closePopup.addEventListener('click', () => {
+    galleryPopup.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Enable scrolling
+});
+
+// Close popup when clicking outside the image
+galleryPopup.addEventListener('click', (e) => {
+    if (e.target === galleryPopup) {
+        galleryPopup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Enable scrolling
+    }
+});
+
+// Scroll animation function
+function checkScroll() {
+    const elements = document.querySelectorAll(
+        '.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale'
+    );
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('animated');
+        }
+    });
+}
+
+// Initial check on page load
+window.addEventListener('load', checkScroll);
+
+// Check on scroll
+window.addEventListener('scroll', checkScroll);
+
+// Set minimum date to today for the date picker
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const dd = String(today.getDate()).padStart(2, '0');
+document.getElementById('date').min = `${yyyy}-${mm}-${dd}`;
+
+// Form validation
+function validateForm() {
+    let isValid = true;
+    
+    // Name validation
+    const name = document.getElementById('name');
+    const nameError = document.getElementById('nameError');
+    if (!name.value.trim()) {
+        name.classList.add('error');
+        nameError.style.display = 'block';
+        isValid = false;
+    } else {
+        name.classList.remove('error');
+        nameError.style.display = 'none';
+    }
+    
+    // Phone validation
+    const phone = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone.value)) {
+        phone.classList.add('error');
+        phoneError.style.display = 'block';
+        isValid = false;
+    } else {
+        phone.classList.remove('error');
+        phoneError.style.display = 'none';
+    }
+    
+    // Village validation
+    const village = document.getElementById('village');
+    const villageError = document.getElementById('villageError');
+    if (!village.value.trim()) {
+        village.classList.add('error');
+        villageError.style.display = 'block';
+        isValid = false;
+    } else {
+        village.classList.remove('error');
+        villageError.style.display = 'none';
+    }
+    
+    // Crop validation
+    const crop = document.getElementById('crop');
+    const cropError = document.getElementById('cropError');
+    if (!crop.value) {
+        crop.classList.add('error');
+        cropError.style.display = 'block';
+        isValid = false;
+    } else {
+        crop.classList.remove('error');
+        cropError.style.display = 'none';
+    }
+    
+    // Acres validation
+    const acres = document.getElementById('acres');
+    const acresError = document.getElementById('acresError');
+    if (!acres.value || acres.value < 1) {
+        acres.classList.add('error');
+        acresError.style.display = 'block';
+        isValid = false;
+    } else {
+        acres.classList.remove('error');
+        acresError.style.display = 'none';
+    }
+    
+    // Date validation
+    const date = document.getElementById('date');
+    const dateError = document.getElementById('dateError');
+    if (!date.value) {
+        date.classList.add('error');
+        dateError.style.display = 'block';
+        isValid = false;
+    } else {
+        date.classList.remove('error');
+        dateError.style.display = 'none';
+    }
+    
+    return isValid;
+}
+
+// Real-time validation
+document.querySelectorAll('.form-control').forEach(input => {
+    input.addEventListener('blur', function() {
+        validateForm();
+    });
+});
+
+// ----- Book your slot + send to Google Sheets -----
+const scriptURL = "https://script.google.com/macros/s/AKfycbxc2T3MEBYZgqCMQ5pue7-lDGlH6nch0jvYBaLpkQ1G99J8gQNF2LYMCLDUFy56Hbc1/exec";
+const form = document.getElementById("bookingForm");
+const status = document.getElementById("status");
+const notification = document.getElementById("notification");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  if (!validateForm()) {
+    status.textContent = "Please fix the errors above before submitting.";
+    status.style.color = "#ff6b6b";
+    return;
+  }
+  
+  status.textContent = "Submitting...";
+  status.style.color = "var(--primary)";
+
+  try {
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form),
+    });
+
+    if (res.ok) {
+      status.textContent = "Booking submitted successfully!";
+      status.style.color = "var(--secondary)";
+      
+      // Show notification AFTER successful submit
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 5000);
+
+      form.reset();
+    } else {
+      status.textContent = "Server error: " + res.status;
+      status.style.color = "#ff6b6b";
+    }
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Network error. Please try again.";
+    status.style.color = "#ff6b6b";
+  }
+});
+</script>
+
+</body>
+</html>
