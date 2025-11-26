@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drone Babai - Agricultural Drone Services</title>
 <style>
+    html{
+        scroll-behavior: smooth;
+    }
 * {
     margin: 0;
     padding: 0;
@@ -437,6 +440,19 @@ header {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: var(--primary);
+}
+
+.crops-category {
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
 }
 
 .crops-grid {
@@ -994,7 +1010,7 @@ footer {
 <div class="detail-card scroll-animate-scale">
 <div class="detail-icon">₹</div>
 <h3>Rate</h3>
-<p>600 rupees per acre</p>
+<p>600 rupees per acre (1 Can)</p>
 </div>
 <div class="detail-card scroll-animate-scale">
 <div class="detail-icon">📈</div>
@@ -1014,40 +1030,85 @@ footer {
 </div>
 <div class="crops-list scroll-animate">
 <h3>Supported Crops</h3>
-<div class="crops-grid">
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/Rice.jpeg" alt="Rice" class="crop-image">
-    <div class="crop-name">Rice</div>
+    
+<div class="crops-category">
+    <h4 class="category-title">Field Crops</h4>
+    <div class="crops-grid">
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Rice.jpeg" alt="Rice" class="crop-image">
+        <div class="crop-name">Rice</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Corn.webp" alt="Corn" class="crop-image">
+        <div class="crop-name">Corn</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/cotton.jpg" alt="Cotton" class="crop-image">
+        <div class="crop-name">Cotton</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/red gram.webp" alt="Red Gram" class="crop-image">
+        <div class="crop-name">Red Gram</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/soybean.jpg" alt="Soybean" class="crop-image">
+        <div class="crop-name">Soybean</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/wheat.jpg" alt="Wheat" class="crop-image">
+        <div class="crop-name">Wheat</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/sugarcane.webp" alt="Sugarcane" class="crop-image">
+        <div class="crop-name">Sugarcane</div>
+    </div>
+    </div>
 </div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/Corn.webp" alt="Corn" class="crop-image">
-    <div class="crop-name">Corn</div>
+    
+<div class="crops-category">
+    <h4 class="category-title">Vegetable Crops (3-5 feet height)</h4>
+    <div class="crops-grid">
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/mirchi.jpg" alt="Mirchi" class="crop-image">
+        <div class="crop-name">Mirchi</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Tomato.avif" alt="Tomato" class="crop-image">
+        <div class="crop-name">Tomato</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/brinjal.jpeg" alt="Brinjal" class="crop-image">
+        <div class="crop-name">Brinjal</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Okra.jpg" alt="Okra" class="crop-image">
+        <div class="crop-name">Okra</div>
+    </div>
+    </div>
 </div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/cotton.jpg" alt="Cotton" class="crop-image">
-    <div class="crop-name">Cotton</div>
+    
+<div class="crops-category">
+    <h4 class="category-title">Vegetable Crops (Low Foliage)</h4>
+    <div class="crops-grid">
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Onion.webp" alt="Onion" class="crop-image">
+        <div class="crop-name">Onion</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Potato.webp" alt="Potato" class="crop-image">
+        <div class="crop-name">Potato</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Carrot.jpeg" alt="Carrot" class="crop-image">
+        <div class="crop-name">Carrot</div>
+    </div>
+    <div class="crop-item scroll-animate-scale">
+        <img src="./Assets/Crops/Cauliflower.webp" alt="Cauliflower" class="crop-image">
+        <div class="crop-name">Cauliflower</div>
+    </div>
+    </div>
 </div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/red gram.webp" alt="Red Gram" class="crop-image">
-    <div class="crop-name">Red Gram</div>
-</div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/mirchi.jpg" alt="Mirchi" class="crop-image">
-    <div class="crop-name">Mirchi</div>
-</div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/soybean.jpg" alt="Soybean" class="crop-image">
-    <div class="crop-name">Soybean</div>
-</div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/wheat.jpg" alt="Wheat" class="crop-image">
-    <div class="crop-name">Wheat</div>
-</div>
-<div class="crop-item scroll-animate-scale">
-    <img src="./Assets/Crops/sugarcane.webp" alt="Sugarcane" class="crop-image">
-    <div class="crop-name">Sugarcane</div>
-</div>
-</div>
+    
 </div>
 </div>
 </section>
@@ -1181,6 +1242,13 @@ footer {
       <option value="cotton">Cotton</option>
       <option value="red-gram">Red Gram</option>
       <option value="mirchi">Mirchi</option>
+      <option value="tomato">Tomato</option>
+      <option value="brinjal">Brinjal</option>
+      <option value="okra">Okra</option>
+      <option value="onion">Onion</option>
+      <option value="potato">Potato</option>
+      <option value="carrot">Carrot</option>
+      <option value="cauliflower">Cauliflower</option>
       <option value="soybean">Soybean</option>
       <option value="wheat">Wheat</option>
       <option value="sugarcane">Sugarcane</option>
